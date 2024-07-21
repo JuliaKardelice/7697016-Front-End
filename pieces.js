@@ -41,26 +41,46 @@ for (let i = 0; i < pieces.length; i++) {
  }
  
  //gestion des boutons 
-const boutonTrier = document.querySelector(".btn-trier");
+const sectionFiltre=document.querySelector(".filtres")
+const boutonTrier = document.createElement("button");
 
-boutonTrier.addEventListener("click", function () {
-    const piecesOrdonnees = Array.from(pieces);
-    piecesOrdonnees.sort(function (a, b) {
-        return a.prix - b.prix;
-     });
-     console.log(piecesOrdonnees);
+boutonTrier.classList.add("btn-trier");
+boutonTrier.innerText="Tri par prix croissant";
+const boutonFiltrer = document.createElement("button");
+boutonFiltrer.classList.add("btn-filtrer");
+boutonFiltrer.innerText="Tri par filtre";
+const retourLigne=document.createElement("br");
+
+sectionFiltre.appendChild(boutonTrier);
+sectionFiltre.appendChild(retourLigne);
+sectionFiltre.appendChild(boutonFiltrer);
+
+
+
+
+///creation des filtres fonctionnels
+
+boutonTrier.addEventListener("click",function(){
+const PieceTrie=Array.from(pieces);
+PieceTrie.sort(function(a,b){
+    return a.prix-b.prix;
+});
+console.log(PieceTrie);
 });
 
-const boutonFiltrer = document.querySelector(".btn-filtrer");
 
-boutonFiltrer.addEventListener("click", function () {
-    const piecesFiltrees = pieces.filter(function (piece) {
-        return piece.prix <= 35;
+
+boutonFiltrer.addEventListener("click",function(){
+    const PieceFiltre= pieces.filter(function(piece){
+        return PieceFiltre.prix <= 35 ;
     });
-   console.log(piecesFiltrees)
-});
+    console.log(PieceFiltre);
+    });
+    
 
 
 
 
 
+
+ 
